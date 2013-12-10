@@ -1,4 +1,5 @@
 
+
 $(document).ready(function() {
 
   /* ---------- Acivate Functions ---------- */
@@ -41,7 +42,22 @@ function reloadIcons() {
 
 function enable_reload() {
   console.log('reloading enabled');
-  $('.page-heading i.icon-reload').removeClass('hide').on('click', reloadIcons);
+
+  var reloadIconElement = $('.page-heading i.icon-reload');
+
+  reloadIconElement.removeClass('hide');
+
+  var hammertime = Hammer(reloadIconElement[0]);
+  console.log(hammertime);
+
+  hammertime.on('dragright release', function(event){ 
+    event.stopPropagation();  
+    event.gesture.stopDetect()
+    if(window.console) { console.log(event); }
+
+    reloadIcons();
+    
+  });
 
 }
 
