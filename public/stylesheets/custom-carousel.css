@@ -1,0 +1,39 @@
+.carousel-inner .item{
+
+  -webkit-transform: scale(0.95) translate3d(0,100%,0);
+  -moz-transform: scale(0.95) translate3d(0,100%,0);
+  -ms-transform: scale(0.95) translate3d(0,100%,0);
+  -o-transform: scale(0.95) translate3d(0,100%,0);
+  transform: scale(0.95) translate3d(0,100%,0);
+
+  
+  -webkit-transition: -webkit-transform 500ms ease-out;
+  -moz-transition: -moz-transform 500ms ease-out;
+  -ms-transition: -ms-transform 500ms ease-out;
+  -o-transition: -o-transform 500ms ease-out;
+  transition: transform 500ms ease-out;
+
+
+
+
+}
+
+.carousel-inner .item.active{
+
+	-webkit-transform: scale(1.0) translate3d(0,0,0);
+	-moz-transform: scale(1.0) translate3d(0,0,0);
+	-ms-transform: scale(1.0) translate3d(0,0,0);
+	-o-transform: scale(1.0) translate3d(0,0,0);
+	transform: scale(1.0) translate3d(0,0,0);
+
+}
+
+.carousel-inner .item.inactive{
+
+	-webkit-transform: scale(1) translate3d(0,0,0);
+	-moz-transform: scale(1) translate3d(0,0,0);
+	-ms-transform: scale(1) translate3d(0,0,0);
+	-o-transform: scale(1) translate3d(0,0,0);
+	transform: scale(1) translate3d(0,0,0);
+
+}
