@@ -2,6 +2,7 @@
 /*
  * GET home page.
  */
+var Enhance;
 
 var icons = [
     { 
@@ -112,13 +113,33 @@ var shuffleIcons = function() {
 }
 
 exports.index = function(req, res){
-    res.render('index', { title: 'Express' });
+    res.render('index', { title: 'Modern UI' });
 };
 
 exports.api = function(req, res){
     shuffleIcons();
+
+    var shuffledIcons = icons.slice(0, 3);
+    shuffledIcons.forEach(function(icon){
+        var arobasLoc = icon.path.indexOf('@');
+        var isHiDPI = Enhance.isHiDPI();
+        icon.path =  isHiDPI  && arobasLoc < 0 ?  Enhance.render(icon.path) //needs @2x
+                        : isHiDPI && arobasLoc > 0  ? icon.path  //already @2x
+                            : arobasLoc < 0 ? icon.path : icon.path.substr(0,arobasLoc) + '.png'; //remove @2x
+        console.log(icon.path);
+    });
     res.json({ 
         api: 'ok',
-        icons: icons.slice(0, 3)
+        icons: shuffledIcons
     });
 };
+
+exports.configEnhance = function(req, res){
+    Enhance = require('enhance')( {devicePixelRatio: req.body.dpr}) ;
+    console.log(req.body.dpr);
+    var ishi = Enhance.isHiDPI();
+    console.log(ishi);
+    res.json({ 
+        dpr: req.body.dpr,
+    });
+}

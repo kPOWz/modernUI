@@ -13,6 +13,7 @@
     "supervisor": "*",
     "express": "3.4.4",
     "hogan-middleware": "*",
-    "less-middleware": "*"
+    "less-middleware": "*",
+    "enhance": "0.0.6"
   }
 }

@@ -7,6 +7,11 @@ $(document).ready(function() {
   init_hpcarousel();
   enable_reload();
   $('#icon-list').html('');
+  $.ajax({
+    url: '/configEnhance',
+    type: "POST",
+    data: { dpr : window.devicePixelRatio },
+  });
   reloadIcons();
 });
 
